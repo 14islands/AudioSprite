@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+<title>AudioSprite demo</title>
+<script src="../AudioSprite.js"></script>
+<style>
+	#btnPlay1, #btnPlay2 {
+		display: none;
+	}
+</style>
+<script>
+
+	var sprite = new AudioSprite('AudioSprite.mp3');
+
+	function playSound1() {
+		sprite.play(0, 1.3); // play from 0s for 1 second duration
+	}
+
+	function playSound2() {
+		sprite.play(1.6, 1.3); // play from 1s for 1 second duration
+	}
+
+	function load() {
+		var btn = document.getElementById('btnLoad');
+		btn.parentNode.removeChild(btn);
+		sprite.load();
+
+		document.getElementById('btnPlay1').style.display = 'block';
+		document.getElementById('btnPlay2').style.display = 'block';
+	}
+
+	/*
+	function initOnTouch() {
+		document.documentElement.removeEventListener(click, initOnTouch, true);
+		sprite.load();
+	}
+	var click = document.ontouchstart === undefined ? 'click' : 'touchstart';
+	document.documentElement.addEventListener(click, initOnTouch, true);
+	*/
+</script>
+</head>
+<body>
+	<button id="btnLoad" onclick="load()">Load Sprite</button>
+	<button id="btnPlay1" onclick="playSound1()">Play 1</button>
+	<button id="btnPlay2" onclick="playSound2()">Play 2</button>
+</body>
+</html>
+	
